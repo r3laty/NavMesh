@@ -5,18 +5,16 @@ public class CharacterController : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private GameObject[] targets;
+    
+    //method on button
+    public void RunAround()
+    {
+        agent.destination = targets[Random.Range(0, targets.Length)].transform.position;
+    }
 
-    private int _currentIndex;
     private void Start()
     {
-        //agent.destination = target.transform.position;
+        agent.destination = targets[Random.Range(0, targets.Length)].transform.position;
     }
-    private void Update()
-    {
-        if (_currentIndex <= targets.Length - 1)
-        {
-            agent.destination = targets[_currentIndex].transform.position;
-            _currentIndex++;
-        }
-    }
+    
 }
